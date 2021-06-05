@@ -1,0 +1,29 @@
+.footer {
+  padding-top: 10px;
+}
+
+.footer-link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.foot-ul {
+  padding: 0;
+}
+
+.foot-li {
+  list-style: none;
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px 5px 0px 5px;
+}
+
+.copyright {
+  text-align: center;
+  margin: 10px 0;
+}
+/*# sourceMappingURL=footer.css.map */

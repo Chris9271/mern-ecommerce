@@ -1,0 +1,30 @@
+.sale-products{
+    display: grid;
+    grid-template-columns: 24% 24% 24% 24%;
+    grid-gap: 10px;
+    margin-left: 10px;
+}
+
+.sale-content-box{
+    padding-top: 10px;
+}
+
+.sale-product-image{
+    height: 360px;
+}
+
+.sale-image-size{
+    width: 100%;
+    height: 100%;
+}
+
+.sale-product-name,
+.sale-product-price{
+    font-family: 'Crimson Text', serif;
+    font-size: 23px;
+}
+
+.sale-product-price{
+    float: right;
+    color: red;
+}

@@ -1,0 +1,32 @@
+.men-products {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 24% 24% 24% 24%;
+      grid-template-columns: 24% 24% 24% 24%;
+  grid-gap: 10px;
+  margin-left: 10px;
+}
+
+.men-content-box {
+  padding-top: 10px;
+}
+
+.men-product-image {
+  height: 360px;
+}
+
+.men-image-size {
+  width: 100%;
+  height: 100%;
+}
+
+.men-product-name,
+.men-product-price {
+  font-family: 'Crimson Text', serif;
+  font-size: 23px;
+}
+
+.men-product-price {
+  float: right;
+}
+/*# sourceMappingURL=Men.css.map */

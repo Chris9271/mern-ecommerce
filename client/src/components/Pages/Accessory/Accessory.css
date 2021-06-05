@@ -1,0 +1,32 @@
+.accessory-products {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 24% 24% 24% 24%;
+      grid-template-columns: 24% 24% 24% 24%;
+  grid-gap: 10px;
+  margin-left: 10px;
+}
+
+.accessory-content-box {
+  padding-top: 10px;
+}
+
+.accessory-product-image {
+  height: 360px;
+}
+
+.accessory-image-size {
+  width: 100%;
+  height: 100%;
+}
+
+.accessory-product-name,
+.accessory-product-price {
+  font-family: 'Crimson Text', serif;
+  font-size: 23px;
+}
+
+.accessory-product-price {
+  float: right;
+}
+/*# sourceMappingURL=Accessory.css.map */

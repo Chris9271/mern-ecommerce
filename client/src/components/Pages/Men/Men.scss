@@ -1,0 +1,46 @@
+.men-products{
+    display: grid;
+    grid-template-columns: 24% 24% 24% 24%; //決定網格的列數跟寬
+    grid-gap: 10px; //網格間隙寬
+    margin-left: 10px;
+}
+
+.men-content-box{
+    padding-top: 10px;
+}
+
+.men-product-image{
+    height: 360px;
+}
+
+.men-image-size{
+    width: 100%;
+    height: 100%;
+}
+
+// .btn-cart{
+//     display: none;
+// }
+
+// .men-product-image:hover > .btn-cart{
+//     display: block;
+//     top: 90%;
+//     left: 50%;
+//     position: absolute;
+//     transform: translate(-50%, -50%);
+//     padding: 10px 10px;
+//     border: none;
+//     border-radius: 5px;
+//     background-color: rgba(255, 255, 255, 0.6);
+//     cursor: pointer;
+// }
+
+.men-product-name,
+.men-product-price{
+    font-family: 'Crimson Text', serif;
+    font-size: 23px;
+}
+
+.men-product-price{
+    float: right;
+}

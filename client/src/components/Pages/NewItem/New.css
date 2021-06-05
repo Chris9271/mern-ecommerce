@@ -1,0 +1,32 @@
+.new-products {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 24% 24% 24% 24%;
+      grid-template-columns: 24% 24% 24% 24%;
+  grid-gap: 10px;
+  margin-left: 10px;
+}
+
+.new-content-box {
+  padding-top: 10px;
+}
+
+.new-product-image {
+  height: 360px;
+}
+
+.new-image-size {
+  width: 100%;
+  height: 100%;
+}
+
+.new-product-name,
+.new-product-price {
+  font-family: 'Crimson Text', serif;
+  font-size: 23px;
+}
+
+.new-product-price {
+  float: right;
+}
+/*# sourceMappingURL=New.css.map */

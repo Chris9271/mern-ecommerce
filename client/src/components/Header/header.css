@@ -1,0 +1,29 @@
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.logo {
+  width: 100px;
+  cursor: pointer;
+}
+
+.head-ul {
+  padding: 0;
+}
+
+a:link,
+a:visited {
+  color: black;
+}
+
+.head-li {
+  list-style: none;
+  cursor: pointer;
+  display: inline-block;
+  padding: 10px 20px 0 20px;
+}
+/*# sourceMappingURL=header.css.map */
