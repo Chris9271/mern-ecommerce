@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import {loadStripe} from '@stripe/stripe-js';
 import './Cart.scss';
+
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_API_KEY);
 
 const Cart = () => {
     const [cart, setCart] = useState([]);
@@ -58,15 +61,23 @@ const Cart = () => {
         // 傳送指定 id 以刪除cart中符合之product, so use query params, indicate an id in a path
         const removeProduct = await axios.delete('http://localhost:5000/cart', {params: {id}})
         console.log(removeProduct);
-        // console.log(cart.length)
         if(cart.length > 0){
             const updateTotal = await axios.patch('http://localhost:5000/cart');
-            // console.log(updateTotal)
             setTotalPrice(updateTotal.data.subTotal)
         }else{
             setTotalPrice(0)
         }
         setCart(cart.filter(item => item._id !== id))
+    }
+
+    const handlePayment = async(e) => {
+        const stripe = await stripePromise;
+        const response = await axios.post('http://localhost:5000/create-checkout-session');
+        const session = response.data;
+        const result = await stripe.redirectToCheckout({
+            sessionId: session.id
+        })
+        console.log(result)
     }
 
     return (
@@ -119,7 +130,24 @@ const Cart = () => {
                     </div>
                 ))}
             <div className="show-total">
-                <p>Item Total: ${totalPrice}</p>
+                <p>Item Total:</p>
+                {/* Number() - solve toFixed undefined */}
+                <p>${Number(totalPrice).toFixed(2)} 
+                </p>
+            </div>
+            <div className="checkout">
+                <button className="pay-btn" onClick={handlePayment} role="link">Pay Now</button>
+            </div>
+            <div className="warning">
+                <p>Please using the following test credit card for payment</p>
+                <p>CVC - use any 3 digits (Amex need any 4 digits)</p>
+                <p>Date - use any future date</p>
+                <p>4242 4242 4242 4242 - Visa</p>
+                <p>5555 5555 5555 4444 - Master</p>
+                <p>3566 0020 2036 0505 - JCB</p>
+                <p>3782 822463 10005 - Amex</p>
+                <p>6011 1111 1111 1117 - Discover</p>
+                <p>3056 9300 0902 0004 - Diner</p>
             </div>
         </div>
         }

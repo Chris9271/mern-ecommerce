@@ -39,7 +39,7 @@ const New = () => {
                         </div>
                         <div className="new-product-info">
                             <span className="new-product-name">{product.productName}</span>
-                            <span className="new-product-price">${product.price}</span>
+                            <span className="new-product-price">${Number(product.price).toFixed(2)}</span>
                         </div>
                     </div>
                 </div>

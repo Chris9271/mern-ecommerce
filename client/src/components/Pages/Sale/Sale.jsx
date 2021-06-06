@@ -39,7 +39,7 @@ const Sale = () => {
                         </div>
                         <div className="sale-product-info">
                             <span className="sale-product-name">{product.productName}</span>
-                            <span className="sale-product-price">${product.price}</span>
+                            <span className="sale-product-price">${Number(product.price).toFixed(2)}</span>
                         </div>
                     </div>
                 </div>

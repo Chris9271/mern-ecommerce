@@ -87,6 +87,8 @@ input::-webkit-inner-spin-button {
 }
 
 .show-total{
+    display: grid;
+    grid-template-columns: 80% 20%;
     text-align: end;
 }
 
@@ -113,4 +115,22 @@ input::-webkit-inner-spin-button {
 .cart-return:hover{
     background: rgba(0, 0, 0, 0.6);
     color: white;
+}
+
+.checkout{
+    text-align: end;
+}
+
+.pay-btn{
+    background: black;
+    color: white;
+    padding: 8px 72px;
+    font-size: 18px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+}
+
+.warning{
+    color: red;
 }

@@ -2,10 +2,11 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-
+const stripe = require('stripe')(process.env.SERVER_STRIPE_SECRET_KEY);
 // const router = express.Router();
 const ProductSchema = require('./model/product');
 const CartSchema = require('./model/cart');
+const HttpRes = require('./model/httpResponse');
 const app = express();
 
 app.use(cors());
@@ -159,7 +160,7 @@ app.put('/cart', async(req, res)=>{
             const productIndex = cart[0].items.findIndex(item => item._id == id)
                 cart[0].items[productIndex].quantity = cart[0].items[productIndex].quantity - 1;
                 cart[0].items[productIndex].total = (cart[0].items[productIndex].quantity * cart[0].items[productIndex].price).toFixed(2);
-                cart[0].subTotal = cart[0].items.map(item => item.total).reduce((acc, next) => acc + next);
+                cart[0].subTotal = cart[0].items.map(item => item.total).reduce((acc, next) => acc + next).toFixed(2);
             let data = await cart[0].save();
             return res.json(data);
         }
@@ -171,7 +172,7 @@ app.put('/cart', async(req, res)=>{
 app.patch('/cart', async(req, res)=>{
     try{
         let cart = await CartSchema.find();
-            if(cart[0].items > 0){
+            if(cart[0].items.length > 0){
                 const id = cart[0]._id;
                 let adjustTotal = cart[0].subTotal;
                 adjustTotal = cart[0].items.map(item => item.total).reduce((arr, next) => arr + next);
@@ -191,18 +192,46 @@ app.delete('/cart', async(req, res)=>{
     try{
         const {id} = req.query;
         let cart = await CartSchema.find();
-            // if(cart[0].item > 0){
-                let deleteCartItem = cart[0].items.id({_id: id}).remove()
-                let updateCart = await cart[0].save(deleteCartItem);
-                return res.json(updateCart)
-            // }else{
-            //     let deleteAll = await CartSchema.deleteMany({})
-            //     return res.json(deleteAll)
-            // }
+        let deleteCartItem = cart[0].items.id({_id: id}).remove()
+        let updateCart = await cart[0].save(deleteCartItem);
+        return res.json(updateCart)
     }catch(err){
         console.log(err)
     }
 })
+
+app.post('/create-checkout-session', async(req, res)=>{
+    try{
+    const cartProduct = await CartSchema.find({});
+    const productName = cartProduct[0].items.map(item => item.productName);
+    const productNames = productName.join(" & ");
+    const productPrice = cartProduct[0].subTotal * 100;
+    const productQuantity = cartProduct[0].items[0].quantity;
+    const session = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        mode: 'payment',
+        line_items:[
+            {
+                price_data:{
+                    currency: 'cad',
+                    product_data: {
+                        name: productNames
+                    },
+                    unit_amount: productPrice
+                },
+                quantity: productQuantity
+            }
+        ],
+        success_url: 'http://localhost:3000/payment',
+        cancel_url: 'http://localhost:3000/cart'
+    })
+    res.json({id: session.id})
+    await CartSchema.deleteMany({})
+    }catch(err){
+        console.log(err)
+    }
+})
+
 
 app.get('/:id', async(req, res)=>{
     try{
@@ -213,6 +242,8 @@ app.get('/:id', async(req, res)=>{
         console.log(err)
     }
 })
+
+
 
 
 mongoose.connect(process.env.MONGODB_URL, {

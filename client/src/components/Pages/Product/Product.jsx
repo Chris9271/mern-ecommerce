@@ -14,6 +14,20 @@ const customStyles = {
         height: '700px'
     }
 }
+
+const customPicStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        transform: 'translate(-50%, -50%)',
+        padding: '0',
+        overflow: 'none',
+        width: '38vw',
+        height: '90vh'
+    }
+}
 // Make sure to bind modal to index.html appElement
 Modal.setAppElement("#modal-root");
 
@@ -23,6 +37,7 @@ const Product = ({match}) => {
     const [item, setItem] = useState([]);
     const [switchPic, setSwitchPic] = useState(false);
     const [openModal, setOpenModal] = useState(false);
+    const [openPicModal, setOpenPicModal] = useState(false);
 
     const handleSwitch = () => {
         setSwitchPic(!switchPic)
@@ -34,6 +49,14 @@ const Product = ({match}) => {
 
     const handleClose = () => {
         setOpenModal(false)
+    }
+
+    const handlePicOpen = () => {
+        setOpenPicModal(true);
+    }
+
+    const handlePicClose = () => {
+        setOpenPicModal(false);
     }
     
     const sendData = async(e) => {
@@ -71,11 +94,18 @@ const Product = ({match}) => {
                 >
                     <img src="https://cdn.shopify.com/s/files/1/1380/3157/files/168293_original_1-2_2048x2048.png?v=1474813445" alt="" className="size-image"/>   
                 </Modal>
+                <Modal
+                    isOpen={openPicModal}
+                    onRequestClose={handlePicClose}
+                    style={customPicStyles}
+                >
+                    <img src={item.image} alt="" className="size-modal-image"/>   
+                </Modal>
                 <div className="product-box">
                     <div className="product-info">
                         <div className="product-image">
                             {!(switchPic) ?
-                                <img src={item.image} alt="product" className="image-size"/>
+                                <img src={item.image} alt="product" className="image-size" onClick={handlePicOpen}/>
                             :   
                                 <img src={item.hoverImage} alt="product" className="image-size"/>
                             }    
@@ -84,7 +114,7 @@ const Product = ({match}) => {
                         </div>
                         <div className="product-detail">
                             <h4 className="item-name">{item.productName}</h4>
-                            <h6 className="item-price">CAD ${item.price}</h6>
+                            <h6 className="item-price">CAD ${Number(item.price).toFixed(2)}</h6>
                             <p>{item.description}</p>
                             <hr/>
                             <p className="size-chart" onClick={handleOpen}><i className="material-icons">straighten</i>Size chart</p>

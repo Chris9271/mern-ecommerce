@@ -39,7 +39,7 @@ const Women = () => {
                         </div>
                         <div className="women-product-info">
                             <span className="women-product-name">{product.productName}</span>
-                            <span className="women-product-price">${product.price}</span>
+                            <span className="women-product-price">${Number(product.price).toFixed(2)}</span>
                         </div>
                     </div>
                 </div>

@@ -9,6 +9,7 @@ import Accessory from './components/Pages/Accessory/Accessory';
 import Men from './components/Pages/Men/Men';
 import Women from './components/Pages/Women/Women';
 import Cart from './components/Pages/Cart/Cart';
+import Payment from './components/Pages/Cart/Payment';
 import './App.css';
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
             <Route path="/women" component={Women}/>
             <Route path="/cart" component={Cart}/>
             {/* <Route path="/sign" component={Sign}/> */}
+            <Route path="/payment" component={Payment}/>
             <Route path="/:id" component={Product}/>
           </Switch>
         <Redirect to="/"/>

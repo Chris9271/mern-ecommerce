@@ -1,10 +1,10 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 
 const Payment = () => {
+    alert("Payment Successful")
     return (
-        <div>
-            
-        </div>
+        <Redirect to="/"/>
     )
 }
 

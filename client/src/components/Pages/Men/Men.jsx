@@ -45,7 +45,7 @@ const Men = () => {
                         </div>
                         <div className="men-product-info">
                             <span className="men-product-name">{product.productName}</span>
-                            <span className="men-product-price">${product.price}</span>
+                            <span className="men-product-price">${Number(product.price).toFixed(2)}</span>
                         </div>
                     </div>
                 </div>
