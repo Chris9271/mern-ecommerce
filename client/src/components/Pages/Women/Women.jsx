@@ -33,7 +33,7 @@ const Women = () => {
                 <div className="women-product-box" key={product._id}>
                     <div className="women-content-box">
                         <div className="women-product-image">
-                            <Link to={`/${product._id}`}>
+                            <Link to={`/product/${product._id}`}>
                                 <HoverImage src={product.image} hoverSrc={product.hoverImage} alt="product" className="women-image-size"/>
                             </Link>
                         </div>

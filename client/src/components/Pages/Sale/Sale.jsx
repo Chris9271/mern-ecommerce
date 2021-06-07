@@ -33,7 +33,7 @@ const Sale = () => {
                 <div className="sale-product-box" key={product._id}>
                     <div className="sale-content-box">
                         <div className="sale-product-image">
-                            <Link to={`/${product._id}`}>
+                            <Link to={`/product/${product._id}`}>
                                 <HoverImage src={product.image} hoverSrc={product.hoverImage} alt="product" className="sale-image-size"/>
                             </Link>
                         </div>

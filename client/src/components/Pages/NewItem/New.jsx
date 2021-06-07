@@ -33,7 +33,7 @@ const New = () => {
                 <div className="new-product-box" key={product._id}>
                     <div className="new-content-box">
                         <div className="new-product-image">
-                            <Link to={`/${product._id}`}>
+                            <Link to={`/product/${product._id}`}>
                                 <HoverImage src={product.image} hoverSrc={product.hoverImage} alt="product" className="new-image-size"/>
                             </Link>
                         </div>

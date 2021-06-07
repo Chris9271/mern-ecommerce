@@ -32,7 +32,7 @@ const Accessory = () => {
                 <div className="accessory-product-box" key={product._id}>
                     <div className="accessory-content-box">
                         <div className="accessory-product-image">
-                            <Link to={`/${product._id}`}>
+                            <Link to={`/product/${product._id}`}>
                                 <HoverImage src={product.image} hoverSrc={product.hoverImage} alt="product" className="accessory-image-size"/>
                             </Link>
                         </div>

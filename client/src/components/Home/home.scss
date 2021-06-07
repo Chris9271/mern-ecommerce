@@ -1,6 +1,7 @@
 .pic-box{
     display: flex;
-    flex-wrap: wrap;
+    // flex-wrap only work on flex items(avoid items crowd together)
+    flex-wrap: wrap; 
     justify-content: space-evenly;
 }
 

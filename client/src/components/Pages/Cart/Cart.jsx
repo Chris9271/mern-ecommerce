@@ -2,14 +2,14 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {loadStripe} from '@stripe/stripe-js';
 import './Cart.scss';
-
+//when Stripes loads return a Promise resolve with stripe object (with PUBLISH KEY)
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_API_KEY);
 
 const Cart = () => {
     const [cart, setCart] = useState([]);
     const [qty, setQty] = useState(); //used to rerender page when quantity in/decrease
     const [totalPrice, setTotalPrice] = useState(0); //store total price
-    const [noItem, setNoItem] = useState();
+    const [noItem, setNoItem] = useState(); //setup cart empty message
 
     useEffect(()=>{
         try{
@@ -20,7 +20,7 @@ const Cart = () => {
                     setCart(item.data[0].items)
                     setTotalPrice(item.data[0].subTotal)
                 }else{
-                    setNoItem(item.config.maxBodyLength)
+                    setNoItem(item.data.length)
                 }
             }
                 cartItem();
@@ -34,15 +34,7 @@ const Cart = () => {
                 console.log(err)
             }
         }
-        const total = () => {
-            let totalPrice = 0;
-            for(let i = 0; i < cart.length; i++){
-                totalPrice += cart[i].price * cart[i].quantity
-            }
-            setTotalPrice(totalPrice);
-        }
-        total()
-        }, [qty, totalPrice])
+    }, [qty, totalPrice])
 
     const handleAddClick = async(e, id) => {
         e.stopPropagation();
@@ -71,18 +63,29 @@ const Cart = () => {
     }
 
     const handlePayment = async(e) => {
+        // Get Stripe.js instance
         const stripe = await stripePromise;
+        // Call backend to create the Checkout Session
         const response = await axios.post('http://localhost:5000/create-checkout-session');
         const session = response.data;
+        console.log(session)
+        // When the customer clicks on the button, redirect them to Checkout.
+        // create a Checkout Session on your server and pass its ID to the client to begin Checkout.
         const result = await stripe.redirectToCheckout({
             sessionId: session.id
         })
+        if(result.error){
+            // If `redirectToCheckout` fails due to a browser or network
+            // error, display the localized error message to your customer
+            // using `result.error.message`.
+            console.log(result.error.message)
+        }
         console.log(result)
     }
 
     return (
         <>
-        {(noItem === -1) ? 
+        {(noItem === 0) ? 
         <div className="cart-empty">
             <h2>You don't have any item in shopping cart.</h2>
             <a href="/" className="return-btn"><button className="cart-return">Back To Home</button></a>
@@ -132,8 +135,7 @@ const Cart = () => {
             <div className="show-total">
                 <p>Item Total:</p>
                 {/* Number() - solve toFixed undefined */}
-                <p>${Number(totalPrice).toFixed(2)} 
-                </p>
+                <p>${Number(totalPrice).toFixed(2)} </p>
             </div>
             <div className="checkout">
                 <button className="pay-btn" onClick={handlePayment} role="link">Pay Now</button>
@@ -141,7 +143,7 @@ const Cart = () => {
             <div className="warning">
                 <p>Please using the following test credit card for payment</p>
                 <p>CVC - use any 3 digits (Amex need any 4 digits)</p>
-                <p>Date - use any future date</p>
+                <p>Date - use any future date (MM/YY)</p>
                 <p>4242 4242 4242 4242 - Visa</p>
                 <p>5555 5555 5555 4444 - Master</p>
                 <p>3566 0020 2036 0505 - JCB</p>

@@ -1,9 +1,8 @@
-class httpResponse extends Error{
+class HttpError extends Error{
     constructor(statusCode, message){
-        super();
-        this.statusCode = statusCode;
-        this.message = message;
+        super(message);
+        this.code = statusCode;
     }
 }
 
-module.exports = httpResponse;
+module.exports = HttpError;

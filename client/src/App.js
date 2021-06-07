@@ -26,7 +26,7 @@ const App = () => {
             <Route path="/cart" component={Cart}/>
             {/* <Route path="/sign" component={Sign}/> */}
             <Route path="/payment" component={Payment}/>
-            <Route path="/:id" component={Product}/>
+            <Route path="/product/:id" component={Product}/>
           </Switch>
         <Redirect to="/"/>
       </BrowserRouter>

@@ -38,7 +38,7 @@ const Men = () => {
                 <div className="men-product-box" key={product._id}>
                     <div className="men-content-box">
                         <div className="men-product-image">
-                            <Link to={`/${product._id}`}>
+                            <Link to={`/product/${product._id}`}>
                                 <HoverImage src={product.image} hoverSrc={product.hoverImage} alt="product" className="men-image-size"/>
                             </Link>
                             {/* <button className="btn-cart">Product Page</button>  */}

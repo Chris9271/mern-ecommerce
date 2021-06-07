@@ -11,7 +11,8 @@ const customStyles = {
         right: 'auto',
         bottom: 'auto',
         transform: 'translate(-50%, -50%)',
-        height: '700px'
+        width: '90vw',
+        height: '90vh'
     }
 }
 
@@ -23,9 +24,7 @@ const customPicStyles = {
         bottom: 'auto',
         transform: 'translate(-50%, -50%)',
         padding: '0',
-        overflow: 'none',
-        width: '38vw',
-        height: '90vh'
+        border: 'none'
     }
 }
 // Make sure to bind modal to index.html appElement
@@ -68,7 +67,8 @@ const Product = ({match}) => {
         try{
             const source = axios.CancelToken.source();
             const product = async() => {
-                const singleItem = await axios.get(`http://localhost:5000/${match.params.id}`, {cancelToken: source.token});
+                const singleItem = await axios.get(`http://localhost:5000/product/${match.params.id}`, {cancelToken: source.token});
+                // console.log(singleItem)
                 setItem(singleItem.data);
             }
                 product();
