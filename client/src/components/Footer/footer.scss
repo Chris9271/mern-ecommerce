@@ -15,10 +15,73 @@
     list-style: none;
     cursor: pointer;
     display: inline-block;
-    padding: 5px 5px 0px 5px;
+    padding: 5px 8px 0px 8px;
+    font-family: 'Crimson Text', serif;
+    font-size: 18px;
 }
 
 .copyright{
     text-align: center;
     margin: 10px 0;
+    font-family: 'Crimson Text', serif;
+    font-size: 20px;
+}
+
+// ****--Responsive Area--****
+@media screen and (max-width: 768px){
+    .footer-link{
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 32px;
+    }
+    .foot-ul{
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 425px){
+    .footer-link{
+        text-align: center;
+        flex-direction: row;
+    }
+
+    .foot-li{
+        padding: 5px 0 0 0;
+        font-size: 20px;
+    }
+
+    .copyright{
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 375px){
+    .footer-link{
+        text-align: center;
+    }
+
+    .foot-li{
+        padding: 5px 0 0 0;
+    }
+
+    .copyright{
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .footer-link{
+        text-align: center;
+    }
+
+    .foot-li{
+        padding: 5px 0 0 0;
+        font-size: 16px;
+    }
+
+    .copyright{
+        font-size: 13px;
+    }
 }

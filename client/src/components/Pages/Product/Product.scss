@@ -101,3 +101,83 @@
 .statement-three{
     color: red;
 }
+
+// ****--Responsive Area--****
+
+@media screen and (max-width: 425px){
+    .product-info{
+        display: block;
+    }
+
+    .left{
+        left: 6%;
+    }
+
+    .right{
+        left: 94%;
+    }
+
+    .item-name,
+    .item-price,
+    .item-description,
+    .size-chart,
+    .statement-three{
+        text-align: center;
+    }
+
+    .cart{
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 375px){
+    .product-info{
+        display: block;
+    }
+
+    .left{
+        left: 7%;
+    }
+
+    .right{
+        left: 93%;
+    }
+
+    .item-name,
+    .item-price,
+    .item-description,
+    .size-chart,
+    .statement-three{
+        text-align: center;
+    }
+
+    .cart{
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .product-info{
+        display: block;
+    }
+
+    .left{
+        left: 8%;
+    }
+
+    .right{
+        left: 92%;
+    }
+
+    .item-name,
+    .item-price,
+    .item-description,
+    .size-chart,
+    .statement-three{
+        text-align: center;
+    }
+
+    .cart{
+        margin: 0 auto;
+    }
+}

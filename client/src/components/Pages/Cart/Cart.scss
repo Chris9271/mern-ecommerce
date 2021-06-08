@@ -134,3 +134,128 @@ input::-webkit-inner-spin-button {
 .warning{
     color: red;
 }
+
+// ****--Responsive Area--****
+@media screen and (max-width: 768px){
+    .pay-btn{
+        padding: 8px 3rem;
+    }
+}
+
+@media screen and (max-width: 570px){
+    .cart-head{
+        grid-template-columns: 35% 25% 25% 15%;
+    }
+
+    .cart-info{
+        grid-template-columns: 35% 25% 25% 15%;
+    }
+
+    .cart-image{
+        width: 60px;
+        height: 80px;
+    }
+
+    .pay-btn{
+        padding: 8px 2.5rem;
+    }
+}
+
+@media screen and (max-width: 425px){
+    .cart-content{
+        width: 95%;
+    }
+
+    .cart-head{
+        grid-template-columns: 35% 25% 25% 15%;
+    }
+
+    .cart-info{
+        grid-template-columns: 35% 25% 25% 15%;
+    }
+
+    .cart-image{
+        width: 60px;
+        height: 80px;
+    }
+
+    .cart-product-name{
+        margin-left: 3px;
+    }
+
+    .pay-btn{
+        font-size: 16px;
+        padding: 8px 45px;
+    }
+
+    .warning{
+        text-align: center;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 375px){
+    .cart-content{
+        width: 95%;
+    }
+
+    .cart-head{
+        grid-template-columns: 35% 25% 25% 15%;
+    }
+
+    .cart-info{
+        grid-template-columns: 35% 25% 25% 15%;
+    }
+
+    .cart-image{
+        width: 60px;
+        height: 80px;
+    }
+
+    .cart-product-name{
+        margin-left: 3px;
+    }
+
+    .pay-btn{
+        font-size: 16px;
+        padding: 8px 40px;
+    }
+
+    .warning{
+        text-align: center;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .cart-content{
+        width: 95%;
+    }
+
+    .cart-head{
+        grid-template-columns: 35% 25% 25% 15%;
+    }
+
+    .cart-info{
+        grid-template-columns: 35% 25% 25% 15%;
+    }
+
+    .cart-image{
+        width: 60px;
+        height: 80px;
+    }
+
+    .cart-product-name{
+        margin-left: 3px;
+    }
+
+    .pay-btn{
+        font-size: 16px;
+        padding: 8px 40px;
+    }
+
+    .warning{
+        text-align: center;
+        font-size: 14px;
+    }
+}

@@ -28,3 +28,63 @@
     float: right;
 }
 
+// ****--Responsive Area--****
+@media screen and (max-width: 768px){
+    .women-products{
+        grid-gap: 7px;
+    }
+    .women-product-name,
+    .women-product-price{
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 570px){
+    .women-products{
+        margin-left: 5px;
+        grid-gap: 6px;
+    }
+    .women-product-name,
+    .women-product-price{
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 425px){
+    .women-products{
+        margin-left: 8px;
+        grid-template-columns: 48% 48%;
+        grid-gap: 8px;
+    }
+
+    .women-product-name,
+    .women-product-price{
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 375px){
+    .women-products{
+        margin-left: 8px;
+        grid-template-columns: 48% 48%;
+        grid-gap: 8px;
+    }
+
+    .women-product-name,
+    .women-product-price{
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .women-products{
+        margin-left: 8px;
+        grid-template-columns: 48% 48%;
+        grid-gap: 5px;
+    }
+
+    .women-product-name,
+    .women-product-price{
+        font-size: 18px;
+    }
+}

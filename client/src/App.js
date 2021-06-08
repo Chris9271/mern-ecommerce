@@ -8,6 +8,7 @@ import New from './components/Pages/NewItem/New';
 import Accessory from './components/Pages/Accessory/Accessory';
 import Men from './components/Pages/Men/Men';
 import Women from './components/Pages/Women/Women';
+import SignIn from './components/Pages/SignIn/SignIn';
 import Cart from './components/Pages/Cart/Cart';
 import Payment from './components/Pages/Cart/Payment';
 import './App.css';
@@ -24,7 +25,7 @@ const App = () => {
             <Route path="/men" component={Men}/>
             <Route path="/women" component={Women}/>
             <Route path="/cart" component={Cart}/>
-            {/* <Route path="/sign" component={Sign}/> */}
+            <Route path="/sign" component={SignIn}/>
             <Route path="/payment" component={Payment}/>
             <Route path="/product/:id" component={Product}/>
           </Switch>

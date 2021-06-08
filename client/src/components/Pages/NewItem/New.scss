@@ -27,3 +27,64 @@
 .new-product-price{
     float: right;
 }
+
+// ****--Responsive Area--****
+@media screen and (max-width: 768px){
+    .new-products{
+        grid-gap: 7px;
+    }
+    .new-product-name,
+    .new-product-price{
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 570px){
+    .new-products{
+        margin-left: 5px;
+        grid-gap: 6px;
+    }
+    .new-product-name,
+    .new-product-price{
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 425px){
+    .new-products{
+        margin-left: 8px;
+        grid-template-columns: 48% 48%;
+        grid-gap: 8px;
+    }
+
+    .new-product-name,
+    .new-product-price{
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 375px){
+    .new-products{
+        margin-left: 8px;
+        grid-template-columns: 48% 48%;
+        grid-gap: 8px;
+    }
+
+    .new-product-name,
+    .new-product-price{
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .new-products{
+        margin-left: 8px;
+        grid-template-columns: 48% 48%;
+        grid-gap: 5px;
+    }
+
+    .new-product-name,
+    .new-product-price{
+        font-size: 18px;
+    }
+}

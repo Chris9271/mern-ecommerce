@@ -115,7 +115,7 @@ const Product = ({match}) => {
                         <div className="product-detail">
                             <h4 className="item-name">{item.productName}</h4>
                             <h6 className="item-price">CAD ${Number(item.price).toFixed(2)}</h6>
-                            <p>{item.description}</p>
+                            <p className="item-description">{item.description}</p>
                             <hr/>
                             <p className="size-chart" onClick={handleOpen}><i className="material-icons">straighten</i>Size chart</p>
                             {/* <a href="/cart" className="cart-wrap"> */}

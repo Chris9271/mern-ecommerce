@@ -22,5 +22,51 @@ a:visited{
     cursor: pointer;
     display: inline-block;
     padding: 10px 20px 0 20px;
+    font-family: 'Crimson Text', serif;
+    font-size: 20px;
 }
 
+// ****--Responsive Area--****
+
+@media screen and (max-width: 425px){
+    .logo-area{
+        padding-top: 16px;
+    }
+
+    .head-ul{
+        padding-top: 10px;
+    }
+
+    .head-li{
+        padding: 10px 8px 0 8px;
+    }
+}
+
+@media screen and (max-width: 375px){
+    .logo-area{
+        padding-top: 16px;
+    }
+
+    .head-ul{
+        padding-top: 10px;
+    }
+
+    .head-li{
+        padding: 10px 8px 0 8px;
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .logo-area{
+        padding-top: 16px;
+    }
+
+    .head-ul{
+        padding-top: 10px;
+    }
+
+    .head-li{
+        padding: 10px 5px 0 5px;
+    }
+}

@@ -28,3 +28,64 @@
     float: right;
     color: red;
 }
+
+// ****--Responsive Area--****
+@media screen and (max-width: 768px){
+    .sale-products{
+        grid-gap: 7px;
+    }
+    .sale-product-name,
+    .sale-product-price{
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 570px){
+    .sale-products{
+        margin-left: 5px;
+        grid-gap: 6px;
+    }
+    .sale-product-name,
+    .sale-product-price{
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 425px){
+    .sale-products{
+        margin-left: 8px;
+        grid-template-columns: 48% 48%;
+        grid-gap: 8px;
+    }
+
+    .sale-product-name,
+    .sale-product-price{
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 375px){
+    .sale-products{
+        margin-left: 8px;
+        grid-template-columns: 48% 48%;
+        grid-gap: 8px;
+    }
+
+    .sale-product-name,
+    .sale-product-price{
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .sale-products{
+        margin-left: 8px;
+        grid-template-columns: 48% 48%;
+        grid-gap: 5px;
+    }
+
+    .sale-product-name,
+    .sale-product-price{
+        font-size: 18px;
+    }
+}

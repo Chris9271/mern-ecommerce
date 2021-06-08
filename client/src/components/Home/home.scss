@@ -130,3 +130,70 @@
     font-size: 1rem;
     color: indianred;
 }
+
+// ****--Responsive Area--****
+@media screen and (max-width: 768px){
+    .men,
+    .women{
+        width: 49.5%;
+    }
+}
+
+@media screen and (max-width: 570px){
+    .sale,
+    .new-item,
+    .accessory{
+        width: 32.5%;
+    }
+}
+
+@media screen and (max-width: 425px){
+    .sale,
+    .new-item,
+    .accessory{
+        width: 100%;
+        height: 250px;
+        margin-top: 3px;
+    }
+
+    .men,
+    .women{
+        width: 100%;
+        height: 300px;
+        margin-top: 3px;
+    }
+}
+
+@media screen and (max-width: 375px){
+    .sale,
+    .new-item,
+    .accessory{
+        width: 100%;
+        height: 200px;
+        margin-top: 3px;
+    }
+
+    .men,
+    .women{
+        width: 100%;
+        height: 250px;
+        margin-top: 3px;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .sale,
+    .new-item,
+    .accessory{
+        width: 100%;
+        height: 200px;
+        margin-top: 3px;
+    }
+
+    .men,
+    .women{
+        width: 100%;
+        height: 250px;
+        margin-top: 3px;
+    }
+}

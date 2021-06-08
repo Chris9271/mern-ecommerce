@@ -44,3 +44,64 @@
 .men-product-price{
     float: right;
 }
+
+// ****--Responsive Area--****
+@media screen and (max-width: 768px){
+    .men-products{
+        grid-gap: 7px;
+    }
+    .men-product-name,
+    .men-product-price{
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 570px){
+    .men-products{
+        margin-left: 5px;
+        grid-gap: 6px;
+    }
+    .men-product-name,
+    .men-product-price{
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 425px){
+    .men-products{
+        margin-left: 8px;
+        grid-template-columns: 48% 48%;
+        grid-gap: 8px;
+    }
+
+    .men-product-name,
+    .men-product-price{
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 375px){
+    .men-products{
+        margin-left: 8px;
+        grid-template-columns: 48% 48%;
+        grid-gap: 8px;
+    }
+
+    .men-product-name,
+    .men-product-price{
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .men-products{
+        margin-left: 8px;
+        grid-template-columns: 48% 48%;
+        grid-gap: 5px;
+    }
+
+    .men-product-name,
+    .men-product-price{
+        font-size: 18px;
+    }
+}
