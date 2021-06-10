@@ -5,6 +5,7 @@ import './home.scss';
 
 const Home = () => {
     return (
+        <>
         <div className="homepage">
             <div className="pic-box">
                 <div className="sale">
@@ -58,8 +59,9 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <Footer/>
         </div>
+        <Footer/>
+        </>
     )
 }
 

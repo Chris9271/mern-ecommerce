@@ -124,7 +124,7 @@ input::-webkit-inner-spin-button {
 .pay-btn{
     background: black;
     color: white;
-    padding: 8px 72px;
+    padding: 8px 3.8rem;
     font-size: 18px;
     font-weight: 500;
     border: none;
@@ -133,6 +133,7 @@ input::-webkit-inner-spin-button {
 
 .warning{
     color: red;
+    font-weight: 600;
 }
 
 // ****--Responsive Area--****
@@ -143,10 +144,7 @@ input::-webkit-inner-spin-button {
 }
 
 @media screen and (max-width: 570px){
-    .cart-head{
-        grid-template-columns: 35% 25% 25% 15%;
-    }
-
+    .cart-head,
     .cart-info{
         grid-template-columns: 35% 25% 25% 15%;
     }
@@ -166,19 +164,6 @@ input::-webkit-inner-spin-button {
         width: 95%;
     }
 
-    .cart-head{
-        grid-template-columns: 35% 25% 25% 15%;
-    }
-
-    .cart-info{
-        grid-template-columns: 35% 25% 25% 15%;
-    }
-
-    .cart-image{
-        width: 60px;
-        height: 80px;
-    }
-
     .cart-product-name{
         margin-left: 3px;
     }
@@ -191,71 +176,36 @@ input::-webkit-inner-spin-button {
     .warning{
         text-align: center;
         font-size: 14px;
+        font-weight: 600;
     }
 }
 
 @media screen and (max-width: 375px){
-    .cart-content{
-        width: 95%;
-    }
-
-    .cart-head{
-        grid-template-columns: 35% 25% 25% 15%;
-    }
-
-    .cart-info{
-        grid-template-columns: 35% 25% 25% 15%;
-    }
-
-    .cart-image{
-        width: 60px;
-        height: 80px;
-    }
-
-    .cart-product-name{
-        margin-left: 3px;
-    }
-
     .pay-btn{
-        font-size: 16px;
         padding: 8px 40px;
     }
 
     .warning{
-        text-align: center;
-        font-size: 14px;
+        font-size: 12px;
     }
 }
 
 @media screen and (max-width: 320px){
-    .cart-content{
-        width: 95%;
-    }
-
-    .cart-head{
-        grid-template-columns: 35% 25% 25% 15%;
-    }
-
+    .cart-head,
     .cart-info{
-        grid-template-columns: 35% 25% 25% 15%;
+        grid-template-columns: 33% 27% 25% 15%;
     }
 
     .cart-image{
-        width: 60px;
-        height: 80px;
-    }
-
-    .cart-product-name{
-        margin-left: 3px;
+        width: 50px;
+        height: 70px;
     }
 
     .pay-btn{
-        font-size: 16px;
-        padding: 8px 40px;
+        padding: 8px 2rem;
     }
 
     .warning{
-        text-align: center;
-        font-size: 14px;
+        font-size: 11px;
     }
 }

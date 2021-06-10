@@ -1,8 +1,9 @@
 .men-products{
+    width: 80%;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: 24% 24% 24% 24%; //決定網格的列數跟寬
     grid-gap: 10px; //網格間隙寬
-    margin-left: 10px;
+    grid-template-columns: 24% 24% 24% 24%; //決定網格的列數跟寬
 }
 
 .men-content-box{
@@ -46,6 +47,13 @@
 }
 
 // ****--Responsive Area--****
+@media screen and (max-width: 1024px){
+    .men-products{
+        width: 99%;
+        margin-left: 10px;
+    }
+}
+
 @media screen and (max-width: 768px){
     .men-products{
         grid-gap: 7px;
@@ -61,10 +69,6 @@
         margin-left: 5px;
         grid-gap: 6px;
     }
-    .men-product-name,
-    .men-product-price{
-        font-size: 18px;
-    }
 }
 
 @media screen and (max-width: 425px){
@@ -73,35 +77,11 @@
         grid-template-columns: 48% 48%;
         grid-gap: 8px;
     }
-
-    .men-product-name,
-    .men-product-price{
-        font-size: 18px;
-    }
-}
-
-@media screen and (max-width: 375px){
-    .men-products{
-        margin-left: 8px;
-        grid-template-columns: 48% 48%;
-        grid-gap: 8px;
-    }
-
-    .men-product-name,
-    .men-product-price{
-        font-size: 18px;
-    }
 }
 
 @media screen and (max-width: 320px){
     .men-products{
-        margin-left: 8px;
-        grid-template-columns: 48% 48%;
+        margin-left: 7px;
         grid-gap: 5px;
-    }
-
-    .men-product-name,
-    .men-product-price{
-        font-size: 18px;
     }
 }

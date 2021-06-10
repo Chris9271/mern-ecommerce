@@ -3,6 +3,10 @@
     justify-content: space-around;
 }
 
+.logo-area{
+    padding-top: 10px;
+}
+
 .logo{
     width: 100px;
     cursor: pointer;
@@ -27,6 +31,11 @@ a:visited{
 }
 
 // ****--Responsive Area--****
+@media screen and (max-width: 768px){
+    .logo-area{
+        padding-top: 10px;
+    }
+}
 
 @media screen and (max-width: 425px){
     .logo-area{
@@ -68,5 +77,11 @@ a:visited{
 
     .head-li{
         padding: 10px 5px 0 5px;
+    }
+}
+
+@media screen and (max-width: 280px){
+    .head-li{
+        padding: 10px 3px 0 3px;
     }
 }

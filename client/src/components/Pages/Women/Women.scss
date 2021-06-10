@@ -1,8 +1,9 @@
 .women-products{
+    width: 80%;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: 24% 24% 24% 24%;
-    margin-left: 10px;
     grid-gap: 10px;
+    grid-template-columns: 24% 24% 24% 24%;
 }
 
 .women-content-box{
@@ -29,6 +30,13 @@
 }
 
 // ****--Responsive Area--****
+@media screen and (max-width: 1024px){
+    .women-products{
+        width: 99%;
+        margin-left: 10px;
+    }
+}
+
 @media screen and (max-width: 768px){
     .women-products{
         grid-gap: 7px;
@@ -44,10 +52,6 @@
         margin-left: 5px;
         grid-gap: 6px;
     }
-    .women-product-name,
-    .women-product-price{
-        font-size: 18px;
-    }
 }
 
 @media screen and (max-width: 425px){
@@ -56,35 +60,11 @@
         grid-template-columns: 48% 48%;
         grid-gap: 8px;
     }
-
-    .women-product-name,
-    .women-product-price{
-        font-size: 18px;
-    }
-}
-
-@media screen and (max-width: 375px){
-    .women-products{
-        margin-left: 8px;
-        grid-template-columns: 48% 48%;
-        grid-gap: 8px;
-    }
-
-    .women-product-name,
-    .women-product-price{
-        font-size: 18px;
-    }
 }
 
 @media screen and (max-width: 320px){
     .women-products{
-        margin-left: 8px;
-        grid-template-columns: 48% 48%;
+        margin-left: 7px;
         grid-gap: 5px;
-    }
-
-    .women-product-name,
-    .women-product-price{
-        font-size: 18px;
     }
 }

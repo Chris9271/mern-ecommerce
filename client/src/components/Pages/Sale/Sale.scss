@@ -1,8 +1,9 @@
 .sale-products{
+    width: 80%;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: 24% 24% 24% 24%;
     grid-gap: 10px;
-    margin-left: 10px;
+    grid-template-columns: 24% 24% 24% 24%;
 }
 
 .sale-content-box{
@@ -30,6 +31,13 @@
 }
 
 // ****--Responsive Area--****
+@media screen and (max-width: 1024px){
+    .sale-products{
+        width: 99%;
+        margin-left: 10px;
+    }
+}
+
 @media screen and (max-width: 768px){
     .sale-products{
         grid-gap: 7px;
@@ -45,10 +53,6 @@
         margin-left: 5px;
         grid-gap: 6px;
     }
-    .sale-product-name,
-    .sale-product-price{
-        font-size: 18px;
-    }
 }
 
 @media screen and (max-width: 425px){
@@ -57,35 +61,11 @@
         grid-template-columns: 48% 48%;
         grid-gap: 8px;
     }
-
-    .sale-product-name,
-    .sale-product-price{
-        font-size: 18px;
-    }
-}
-
-@media screen and (max-width: 375px){
-    .sale-products{
-        margin-left: 8px;
-        grid-template-columns: 48% 48%;
-        grid-gap: 8px;
-    }
-
-    .sale-product-name,
-    .sale-product-price{
-        font-size: 18px;
-    }
 }
 
 @media screen and (max-width: 320px){
     .sale-products{
-        margin-left: 8px;
-        grid-template-columns: 48% 48%;
+        margin-left: 7px;
         grid-gap: 5px;
-    }
-
-    .sale-product-name,
-    .sale-product-price{
-        font-size: 18px;
     }
 }

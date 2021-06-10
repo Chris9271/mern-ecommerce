@@ -17,7 +17,7 @@
     display: inline-block;
     padding: 5px 8px 0px 8px;
     font-family: 'Crimson Text', serif;
-    font-size: 18px;
+    font-size: 19px;
 }
 
 .copyright{
@@ -39,6 +39,9 @@
     .foot-ul{
         margin-bottom: 0;
     }
+    .copyright{
+        font-size: 18px;
+    }
 }
 
 @media screen and (max-width: 425px){
@@ -49,7 +52,7 @@
 
     .foot-li{
         padding: 5px 0 0 0;
-        font-size: 20px;
+        font-size: 19px;
     }
 
     .copyright{
@@ -64,6 +67,7 @@
 
     .foot-li{
         padding: 5px 0 0 0;
+        font-size: 18px;
     }
 
     .copyright{
@@ -78,10 +82,10 @@
 
     .foot-li{
         padding: 5px 0 0 0;
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .copyright{
-        font-size: 13px;
+        font-size: 14px;
     }
 }
