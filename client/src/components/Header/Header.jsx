@@ -11,7 +11,7 @@ const Header = () => {
                     <img src={LOGO} alt="logo" className="logo"/>
                 </NavLink>
             </div>
-            <nav className="link-area">
+            <div className="link-area">
                 <ul className="head-ul">
                     <NavLink to="/men">
                         <li className="head-li">Men</li>
@@ -26,7 +26,7 @@ const Header = () => {
                         <li className="head-li">Cart</li>
                     </NavLink>
                 </ul>
-            </nav>
+            </div>
         </div>
     )
 }

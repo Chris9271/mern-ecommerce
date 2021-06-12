@@ -1,4 +1,6 @@
 .pic-box{
+    // width: 80%;
+    // margin: 0 auto;
     display: flex;
     // flex-wrap only work on flex items(avoid items crowd together)
     flex-wrap: wrap; 
@@ -132,6 +134,12 @@
 }
 
 // ****--Responsive Area--****
+// @media screen and (max-width: 1024px){
+//     .pic-box{
+//         width: 99%;
+//     }
+// }
+
 @media screen and (max-width: 768px){
     .men,
     .women{

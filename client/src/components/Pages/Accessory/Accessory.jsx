@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import HoverImage from 'react-hover-image';
 import {Link} from 'react-router-dom';
-import Footer from '../../Footer/footer';
+import Footer from '../../Footer/Footer';
 import './Accessory.scss';
 
 const Accessory = () => {

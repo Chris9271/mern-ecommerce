@@ -1,0 +1,46 @@
+.sign-form{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.left-row,
+.right-row{
+    width: 35%;
+    height: 65vh;
+    margin: 30px 0;
+}
+
+.signup,
+.login{
+    padding-top: 5px;
+}
+
+.input-field input[type=text]:focus:not([readonly]) + label,
+.input-field input[type=email]:focus:not([readonly]) + label,
+.input-field input[type=password]:focus:not([readonly]) + label{
+    color: #9e9e9e ;
+}
+
+.input-field input[type=text]:focus:not([readonly]),
+.input-field input[type=email]:focus:not([readonly]),
+.input-field input[type=password]:focus:not([readonly]){
+    border-bottom: 1px solid #9e9e9e;
+    box-shadow: none;
+}
+
+.btn-login,
+.btn-signup{
+    margin-top: 8px;
+    padding: 8px 16px;
+    background-color: rgba(120, 120, 120, 0.6);
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-login:hover,
+.btn-signup:hover{
+    color: white;
+    background-color:black;
+}

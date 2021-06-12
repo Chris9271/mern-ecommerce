@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
-import Footer from '../../Footer/footer';
+import Footer from '../../Footer/Footer';
 import './Product.scss';
 
 const customStyles = {
