@@ -41,7 +41,7 @@
 }
 
 .right{
-    left: 94%;
+    left: 90%;
 }
 
 .left:hover,
@@ -74,6 +74,8 @@
     padding: 8px 16px;
     font-size: 20px;
     font-weight: 600;
+    background-color: rgb(239, 239, 239) !important;
+    border: 1px solid black;
     cursor: pointer;
 }
 
@@ -82,7 +84,7 @@
 }
 
 .cart:hover{
-    background: black;
+    background: black !important;
     color: white;
 }
 
@@ -119,7 +121,7 @@
     }
 
     .right{
-        left: 93%;
+        left: 86%;
     }
 }
 
@@ -133,7 +135,7 @@
     }
 
     .right{
-        left: 95%;
+        left: 91%;
     }
 
     .item-name,
@@ -155,7 +157,7 @@
     }
 
     .right{
-        left: 94%;
+        left: 90%;
     }
 }
 
@@ -165,6 +167,6 @@
     }
 
     .right{
-        left: 93%;
+        left: 86%;
     }
 }

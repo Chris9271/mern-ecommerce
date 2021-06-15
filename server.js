@@ -3,15 +3,23 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const stripe = require('stripe')(process.env.SERVER_STRIPE_SECRET_KEY);
+const session = require('express-session');
 const CartSchema = require('./model/cart');
 const HttpError = require('./model/httpResponse');
 const pageRouter = require('./routes/page-route');
+const userRouter = require('./routes/user-route');
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(session({
+    secret: 'user login',
+    resave: false,
+    saveUninitialized: false
+}))
 
 app.use('/', pageRouter);
+app.use('/', userRouter);
 
 app.post('/create-checkout-session', async(req, res, next)=>{
     let cartProduct;

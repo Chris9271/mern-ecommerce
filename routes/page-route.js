@@ -12,6 +12,7 @@ router.get('/cart', pageController.getCart);
 router.put('/cart', pageController.putUpdateItemAmount);
 router.patch('/cart', pageController.patchAdjustCart);
 router.delete('/cart', pageController.deleteCart);
+
 router.get('/product/:id', pageController.getSingleProduct);
 
 module.exports = router;

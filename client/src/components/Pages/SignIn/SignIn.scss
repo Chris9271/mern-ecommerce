@@ -1,13 +1,15 @@
 .sign-form{
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .left-row,
 .right-row{
     width: 35%;
-    height: 65vh;
-    margin: 30px 0;
+    height: 55vh;
+    margin-top: 30px;
 }
 
 .signup,
@@ -29,10 +31,11 @@
 }
 
 .btn-login,
-.btn-signup{
+.btn-signup,
+.btn-switch{
     margin-top: 8px;
     padding: 8px 16px;
-    background-color: rgba(120, 120, 120, 0.6);
+    background-color: rgba(120, 120, 120, 0.6) !important;
     border: none;
     border-radius: 5px;
     font-size: 16px;
@@ -40,7 +43,12 @@
 }
 
 .btn-login:hover,
-.btn-signup:hover{
+.btn-signup:hover,
+.btn-switch:hover{
     color: white;
-    background-color:black;
+    background-color:black !important;
+}
+
+.switch-area{
+    height: 15vh;
 }

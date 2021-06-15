@@ -1,49 +1,184 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {Formik, Form, useField} from 'formik';
+import axios from 'axios';
+import * as Yup from 'yup';
+import {useDispatch, useSelector} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 import Footer from '../../Footer/Footer';
 import './SignIn.scss';
 
+
 const SignIn = () => {
+    const [isLoginMode, setIsLoginMode] = useState(false);
+    const {userId} = useSelector(state => state)
+    const dispatch = useDispatch();
+
+    const switchHandler = () => {
+        setIsLoginMode((isLoginMode) => !isLoginMode)
+    }
+    console.log(isLoginMode)
+
+const validationSchemaLeft = Yup.object({
+    email: Yup.string()
+    .email('Email is in valid')
+    .required('Email is required'),
+    password: Yup.string()
+    .min(8, 'Password has to be longer than 8 characters')
+    .required('Please enter password')
+    .matches(/^(?=[A-Za-z]*.)(?=\d*.)(?=[!@#$%&*?]*.)[A-Za-z\d!@#$%&*?]{8,}$/, "Should contain 8 chars, at least one number and special case chars")
+})
+
+const validationSchemaRight = Yup.object({
+    username: Yup.string()
+    .min(3, 'Username should longer than 3 characters')
+    .concat(isLoginMode ? Yup.string().required('Please enter your username') : null),
+    // .required('Please enter your username'),
+    email: Yup.string()
+    .email('Email is in valid')
+    .required('Email is required'),
+    password: Yup.string()
+    .min(8, 'Password has to be longer than 8 characters')
+    .required('Please enter password')
+    .matches(/^(?=[A-Za-z]*.)(?=\d*.)(?=[!@#$%&*?]*.)[A-Za-z\d!@#$%&*?]{8,}$/, "Should contain 8 chars, at least one number and special case chars"),
+    confirmpassword: Yup.string()
+    .oneOf([Yup.ref('password'), null], 'Password is not match')
+    .concat(isLoginMode ? Yup.string().required('Please enter password again') : null)
+    // .required('Please enter password again')
+})
+
+const CustomInput = ({label, ...props}) => {
+    const [field, meta] = useField(props);
+    // console.log(label)
+    // console.log(props)
+    // console.log(field)
+    // console.log(meta)
+    if(props.type === "text"){
+        return(
+            <div className="input-field col s12">
+                <input {...field}{...props}/>
+                <label htmlFor={props.name}>{label}</label>
+                {meta.touched && meta.error ? (
+                    <span>{meta.error}</span>
+                ): null}
+            </div>
+        )
+    }else{
+        return(
+            <div className="input-field col s12">
+                <input {...field}{...props}/>
+                <label htmlFor={props.name}>{label}</label>
+                {meta.touched && meta.error ? (
+                    <span>{meta.error}</span>
+                ): null}
+            </div>
+        )
+    }
+}
+
+const authSubmitHandler = async(values) => {
+    console.log(values)
+    if(!isLoginMode){
+        try{
+            const addUser = await axios.post('http://localhost:5000/sign', values)
+            console.log(addUser);
+            dispatch({type: "LOGIN", payload: addUser.data._id})
+        }catch(err){
+            console.log(err)
+        }
+    }else{
+        try{
+            const signUser = await axios.post('http://localhost:5000/login', values)
+            console.log(signUser);
+            dispatch({type: "LOGIN", payload: signUser.data._id})
+        }catch(err){
+            console.log(err)
+        }
+    }
+}
+
+if(userId) return <Redirect to = "/"/>
+
+
     return (
         <>
-        <div className="sign-form">
-            <div className="left-row">
-                <h4>SignIn</h4>
-                <form className="login">
-                    <div className="input-field col s12">
-                        <input type="email" className="login-email"/>
-                        <label htmlFor="login-email">E-mail</label>
+            <div className="sign-form">
+                    <Formik
+                        initialValues={!isLoginMode ? {
+                            username: '',
+                            email: '',
+                            password: '',
+                            confirmpassword: ''
+                        }:{
+                            email: '',
+                            password: ''
+                        }}
+                        // initialValues={{
+                        //     username: '',
+                        //     email: '',
+                        //     password: '',
+                        //     confirmpassword: ''
+                        // }}
+                        validationSchema={!isLoginMode ? validationSchemaRight : validationSchemaLeft}
+                        onSubmit={(values, {resetForm, submitForm, setSubmitting})=>{
+                            setSubmitting(false);
+                            resetForm();
+                            submitForm();
+                            authSubmitHandler(values)
+                        }}
+                    >
+                    {(props)=>{
+                        return(
+                        <div className="right-row">
+                            <h4>{!isLoginMode ? "Sign Up" : "Sign In"}</h4>
+                            <Form>
+                                {!isLoginMode ?
+                                    <CustomInput
+                                        label="Username"
+                                        type="text"
+                                        name="username"
+                                    />
+                                : null
+                                }
+                                <CustomInput
+                                    label="Email"
+                                    type="text"
+                                    name="email"
+                                />
+                                <CustomInput
+                                    label="Password"
+                                    type="password"
+                                    name="password"
+                                />
+                                {!isLoginMode ?
+                                    <CustomInput
+                                        label="ConfirmPassword"
+                                        type="password"
+                                        name="confirmpassword"
+                                    />
+                                : null
+                                }
+                                <button 
+                                    type="submit" 
+                                    className="btn-signup"
+                                    disabled={props.isSubmitting}
+                                >
+                                    {!isLoginMode ? "Sign Up" : "Sign In"}
+                                </button>
+                            </Form>
+                        </div>
+                        )
+                    }}
+                    </Formik>
+                    <div className="switch-area">
+                        <h5>
+                            {isLoginMode ? "Don't have account?" : "Already register?"}
+                        </h5>
+                        <button className="btn-switch" onClick={switchHandler}>
+                            Switch To {isLoginMode ? "Sign Up" : "Sign In"}
+                        </button>
                     </div>
-                    <div className="input-field col s12">
-                        <input type="password" className="login-password"/>
-                        <label htmlFor="login-password">Password</label>
-                    </div>
-                    <button type="submit" className="btn-login">Login</button>
-                </form>
             </div>
-            <div className="right-row">
-                <h4>SignUp</h4>
-                    <form className="signup">
-                        <div className="input-field col s12">
-                            <input type="text" className="username" required/>
-                            <label htmlFor="username">Username</label>
-                        </div>
-                        <div className="input-field col s12">
-                            <input type="email" className="email"/>
-                            <label htmlFor="email">E-mail</label>
-                        </div>
-                        <div className="input-field col s12">
-                            <input type="password" className="password"/>
-                            <label htmlFor="password">Password</label>
-                        </div>
-                        <div className="input-field col s12">
-                            <input type="password" className="confirmpassword"/>
-                            <label htmlFor="confirmpassword">ConfirmPassword</label>
-                        </div>
-                        <button type="submit" className="btn-signup">SignUp</button>
-                    </form>
-            </div>
-        </div>
-        <Footer/>
+            <Footer/>
         </>
     )
 }
