@@ -3,20 +3,44 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const stripe = require('stripe')(process.env.SERVER_STRIPE_SECRET_KEY);
-const session = require('express-session');
+// const session = require('express-session');
+// const MongoDBStore = require('connect-mongodb-session')(session);
 const CartSchema = require('./model/cart');
 const HttpError = require('./model/httpResponse');
 const pageRouter = require('./routes/page-route');
 const userRouter = require('./routes/user-route');
+// const User = require('./model/user');
 const app = express();
+// const store = new MongoDBStore({
+//     uri: process.env.MONGODB_URL,
+//     collection: 'session'
+// })
 
 app.use(cors());
 app.use(express.json());
-app.use(session({
-    secret: 'user login',
-    resave: false,
-    saveUninitialized: false
-}))
+
+// create a new session 
+// app.use(session({
+//     secret: 'userLogin',
+//     resave: false,
+//     saveUninitialized: false,
+//     store: store
+// }))
+
+// app.use((req, res, next)=>{
+//     if(!req.session.user){
+//         return next();
+//     }
+//     User.findById(req.session.user._id)
+//         .then(user => {
+//            // create new property in request
+//         req.user = user
+//            // if not next here will stop and not execute the route
+//         next();
+//     })
+//     .catch(err => console.log(err))
+// })
+
 
 app.use('/', pageRouter);
 app.use('/', userRouter);

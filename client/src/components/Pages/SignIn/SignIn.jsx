@@ -10,13 +10,13 @@ import './SignIn.scss';
 
 const SignIn = () => {
     const [isLoginMode, setIsLoginMode] = useState(false);
-    const {userId} = useSelector(state => state)
+    const {isLogin} = useSelector(state => state)
     const dispatch = useDispatch();
 
     const switchHandler = () => {
         setIsLoginMode((isLoginMode) => !isLoginMode)
     }
-    console.log(isLoginMode)
+    // console.log(isLoginMode)
 
 const validationSchemaLeft = Yup.object({
     email: Yup.string()
@@ -31,7 +31,7 @@ const validationSchemaLeft = Yup.object({
 const validationSchemaRight = Yup.object({
     username: Yup.string()
     .min(3, 'Username should longer than 3 characters')
-    .concat(isLoginMode ? Yup.string().required('Please enter your username') : null),
+    .concat(!isLoginMode ? Yup.string().required('Please enter your username') : null),
     // .required('Please enter your username'),
     email: Yup.string()
     .email('Email is in valid')
@@ -39,10 +39,10 @@ const validationSchemaRight = Yup.object({
     password: Yup.string()
     .min(8, 'Password has to be longer than 8 characters')
     .required('Please enter password')
-    .matches(/^(?=[A-Za-z]*.)(?=\d*.)(?=[!@#$%&*?]*.)[A-Za-z\d!@#$%&*?]{8,}$/, "Should contain 8 chars, at least one number and special case chars"),
+    .matches(/^(?=[A-Za-z]*.)(?=\d*.)(?=[!@#$%&*?]*.)[A-Za-z\d!@#$%&*?]{8,}$/, "Should contain 8 chars"),
     confirmpassword: Yup.string()
     .oneOf([Yup.ref('password'), null], 'Password is not match')
-    .concat(isLoginMode ? Yup.string().required('Please enter password again') : null)
+    .concat(!isLoginMode ? Yup.string().required('Please enter password again') : null)
     // .required('Please enter password again')
 })
 
@@ -58,7 +58,7 @@ const CustomInput = ({label, ...props}) => {
                 <input {...field}{...props}/>
                 <label htmlFor={props.name}>{label}</label>
                 {meta.touched && meta.error ? (
-                    <span>{meta.error}</span>
+                    <span className="error-msg">{meta.error}</span>
                 ): null}
             </div>
         )
@@ -68,7 +68,7 @@ const CustomInput = ({label, ...props}) => {
                 <input {...field}{...props}/>
                 <label htmlFor={props.name}>{label}</label>
                 {meta.touched && meta.error ? (
-                    <span>{meta.error}</span>
+                    <span className="error-msg">{meta.error}</span>
                 ): null}
             </div>
         )
@@ -88,7 +88,7 @@ const authSubmitHandler = async(values) => {
     }else{
         try{
             const signUser = await axios.post('http://localhost:5000/login', values)
-            console.log(signUser);
+            console.log(signUser)
             dispatch({type: "LOGIN", payload: signUser.data._id})
         }catch(err){
             console.log(err)
@@ -96,8 +96,7 @@ const authSubmitHandler = async(values) => {
     }
 }
 
-if(userId) return <Redirect to = "/"/>
-
+if(isLogin) return <Redirect to = "/"/>
 
     return (
         <>
@@ -131,13 +130,13 @@ if(userId) return <Redirect to = "/"/>
                         <div className="right-row">
                             <h4>{!isLoginMode ? "Sign Up" : "Sign In"}</h4>
                             <Form>
-                                {!isLoginMode ?
+                                {!isLoginMode && (
                                     <CustomInput
                                         label="Username"
                                         type="text"
                                         name="username"
                                     />
-                                : null
+                                )
                                 }
                                 <CustomInput
                                     label="Email"
@@ -149,20 +148,20 @@ if(userId) return <Redirect to = "/"/>
                                     type="password"
                                     name="password"
                                 />
-                                {!isLoginMode ?
+                                {!isLoginMode && (
                                     <CustomInput
                                         label="ConfirmPassword"
                                         type="password"
                                         name="confirmpassword"
                                     />
-                                : null
+                                )
                                 }
                                 <button 
                                     type="submit" 
                                     className="btn-signup"
                                     disabled={props.isSubmitting}
                                 >
-                                    {!isLoginMode ? "Sign Up" : "Sign In"}
+                                    {props.isSubmitting ? "Loading..." : "Submit"}
                                 </button>
                             </Form>
                         </div>
@@ -173,10 +172,20 @@ if(userId) return <Redirect to = "/"/>
                         <h5>
                             {isLoginMode ? "Don't have account?" : "Already register?"}
                         </h5>
-                        <button className="btn-switch" onClick={switchHandler}>
+                        <button 
+                            className="btn-switch" 
+                            type="reset"
+                            onClick={() => {
+                                switchHandler();
+                                // props.resetForm();
+                            }}>
                             Switch To {isLoginMode ? "Sign Up" : "Sign In"}
                         </button>
                     </div>
+                    {/* </div>
+                        )
+                    }}
+                    </Formik> */}
             </div>
             <Footer/>
         </>

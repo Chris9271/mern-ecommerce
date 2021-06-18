@@ -1,14 +1,23 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
+import axios from 'axios';
 import LOGO from '../../images/logo1.png';
 import './header.scss';
 
 const Header = () => {
     const {isLogin} = useSelector(state => state);
+    console.log(isLogin)
     const dispatch = useDispatch();
-    const handleClick = () => {
-        dispatch({type: "LOGOUT"})
+    const handleClick = async() => {
+        try{
+            // const signOut = await axios.post('http://localhost:5000/logout');
+            // console.log(signOut)
+            dispatch({type: "LOGOUT"})
+            console.log(isLogin)
+        }catch(err){
+            console.log(err)
+        }
     }
     
     return (
@@ -26,7 +35,7 @@ const Header = () => {
                     <NavLink to="/women">
                         <li className="head-li">Women</li>
                     </NavLink>
-                    {!isLogin?
+                    {!isLogin ? 
                         <NavLink to="/sign">
                             <li className="head-li">SignIn</li>
                         </NavLink>
