@@ -4,6 +4,8 @@
 }
 
 .product-box{
+    width: 80%;
+    margin: 0 auto;
     padding-top: 10px;
 }
 
@@ -37,11 +39,12 @@
 }
 
 .left{
-    left: 6%;
+    left: 5%;
 }
 
 .right{
-    left: 90%;
+    // left: 90%;
+    right: -4%;
 }
 
 .left:hover,
@@ -109,6 +112,17 @@
     .product{
         width: 75%;
     }
+    .left{
+        left: 6%;
+    }
+
+    .right{
+        right: -5%;
+    }
+
+    .product-box{
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 768px){
@@ -121,7 +135,7 @@
     }
 
     .right{
-        left: 86%;
+        right: -5%;
     }
 }
 

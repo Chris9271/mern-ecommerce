@@ -87,7 +87,7 @@ const Cart = () => {
         <>
         {(noItem === 0) ? 
         <div className="cart-empty">
-            <h2>You don't have any item in shopping cart.</h2>
+            <h3>Your cart is empty.</h3>
             <a href="/" className="return-btn"><button className="cart-return">Back To Home</button></a>
         </div>
         :

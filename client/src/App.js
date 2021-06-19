@@ -29,7 +29,7 @@ const App = () => {
             <Route path="/payment" component={Payment}/>
             <Route path="/product/:id" component={Product}/>
           </Switch>
-        {/* <Redirect to="/"/> */}
+        <Redirect to="/"/>
       </BrowserRouter>
   );
 }

@@ -16,19 +16,9 @@ const SignIn = () => {
     const switchHandler = () => {
         setIsLoginMode((isLoginMode) => !isLoginMode)
     }
-    // console.log(isLoginMode)
+    console.log("Switch Sign Mode:", isLoginMode)
 
-const validationSchemaLeft = Yup.object({
-    email: Yup.string()
-    .email('Email is in valid')
-    .required('Email is required'),
-    password: Yup.string()
-    .min(8, 'Password has to be longer than 8 characters')
-    .required('Please enter password')
-    .matches(/^(?=[A-Za-z]*.)(?=\d*.)(?=[!@#$%&*?]*.)[A-Za-z\d!@#$%&*?]{8,}$/, "Should contain 8 chars, at least one number and special case chars")
-})
-
-const validationSchemaRight = Yup.object({
+const validationSchema = Yup.object({
     username: Yup.string()
     .min(3, 'Username should longer than 3 characters')
     .concat(!isLoginMode ? Yup.string().required('Please enter your username') : null),
@@ -111,13 +101,7 @@ if(isLogin) return <Redirect to = "/"/>
                             email: '',
                             password: ''
                         }}
-                        // initialValues={{
-                        //     username: '',
-                        //     email: '',
-                        //     password: '',
-                        //     confirmpassword: ''
-                        // }}
-                        validationSchema={!isLoginMode ? validationSchemaRight : validationSchemaLeft}
+                        validationSchema={validationSchema}
                         onSubmit={(values, {resetForm, submitForm, setSubmitting})=>{
                             setSubmitting(false);
                             resetForm();
@@ -127,8 +111,8 @@ if(isLogin) return <Redirect to = "/"/>
                     >
                     {(props)=>{
                         return(
-                        <div className="right-row">
-                            <h4>{!isLoginMode ? "Sign Up" : "Sign In"}</h4>
+                        <div className="form-wrapper">
+                            <h4 className="sign-title">{!isLoginMode ? "Sign Up" : "Sign In"}</h4>
                             <Form>
                                 {!isLoginMode && (
                                     <CustomInput
@@ -164,28 +148,24 @@ if(isLogin) return <Redirect to = "/"/>
                                     {props.isSubmitting ? "Loading..." : "Submit"}
                                 </button>
                             </Form>
-                        </div>
-                        )
-                    }}
-                    </Formik>
                     <div className="switch-area">
                         <h5>
-                            {isLoginMode ? "Don't have account?" : "Already register?"}
+                            {!isLoginMode ? "Already register?" : "Don't have an account?"}
                         </h5>
                         <button 
                             className="btn-switch" 
                             type="reset"
                             onClick={() => {
                                 switchHandler();
-                                // props.resetForm();
+                                props.resetForm();
                             }}>
-                            Switch To {isLoginMode ? "Sign Up" : "Sign In"}
+                            Switch To {!isLoginMode ? "Sign In" : "Sign Up"}
                         </button>
                     </div>
-                    {/* </div>
+                    </div>
                         )
                     }}
-                    </Formik> */}
+                    </Formik>
             </div>
             <Footer/>
         </>

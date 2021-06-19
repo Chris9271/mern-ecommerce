@@ -1,13 +1,13 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
-import axios from 'axios';
+// import axios from 'axios';
 import LOGO from '../../images/logo1.png';
 import './header.scss';
 
 const Header = () => {
     const {isLogin} = useSelector(state => state);
-    console.log(isLogin)
+    console.log("Login:", isLogin)
     const dispatch = useDispatch();
     const handleClick = async() => {
         try{
